@@ -21,11 +21,16 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
       - name: Terraform Init
         run: terraform init
+        working-directory: ./infra
       - name: Terraform Format Check
         run: terraform fmt --check
+        working-directory: ./infra
       - name: Terraform Plan
+        working-directory: ./infra
         run: terraform plan
       - name: Terraform Validate
+        working-directory: ./infra
         run: terraform validate
       - name: Terraform Apply
+        working-directory: ./infra
         run: terraform apply -auto-approve
