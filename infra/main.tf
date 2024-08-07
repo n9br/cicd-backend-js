@@ -1,3 +1,7 @@
+provider "aws" {
+  region = var.aws_region
+}
+
 terraform {
   required_providers {
     aws = {
@@ -6,21 +10,30 @@ terraform {
     }
   }
 
+  # Terraform State Bucket
   backend "s3" {
-    bucket         	   = "cicd-otf-state"
-    key              	   = "state/tofu.tfstate"
-    # key              	   = "state/terraform.tfstate"
-    region         	   = "eu-central-1"
-    encrypt        	   = true
+    bucket  = "cicd-otf-state"
+    key     = "state/express.tfstate"
+    region  = "eu-central-1"
+    encrypt = true
     # dynamodb_table = "mycomponents_tf_lockid"
   }
 }
 
-  provider "aws" {
-  region = var.aws_region
+resource "aws_instance" "express-api" {
+  ami           = "ami-071de147bf3f27475" # Replace with your chosen AMI
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.cicd-subnet-pub-1a.id
+  # associate_public_ip_address = true
+  vpc_security_group_ids = [aws_security_group.cicd-sg.id]
+  key_name               = "0730"
+  user_data              = file("./user_data.sh")
+  tags = {
+    Name = "ExpressAPI"
+  }
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-04e601abe3e1a910f"
-  instance_type = "t2.micro"
+output "express-api-ip" {
+  value = aws_instance.express-api.public_ip
 }
+
