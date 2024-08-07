@@ -26,11 +26,12 @@ jobs:
         run: terraform fmt --check
         working-directory: ./infra
       - name: Terraform Plan
-        working-directory: ./infra
         run: terraform plan
+        working-directory: ./infra
       - name: Terraform Validate
-        working-directory: ./infra
         run: terraform validate
-      - name: Terraform Apply
         working-directory: ./infra
+      - name: Terraform Apply
         run: terraform apply -auto-approve
+        working-directory: ./infra
+
