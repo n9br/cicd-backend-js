@@ -18,14 +18,3 @@ resource "aws_s3_bucket" "cicd-otf-state" {
   bucket = "cicd-otf-state"
   # acl = "my-acl"
 }
-
-
-# resource "aws_dynamodb_table" "cicd-tfstate-db" {
-#   name = "cicd-tfstate-db"
-#   # attributes =
-#   #       {
-#   #         name = "LockID"
-#   #         type = "N"
-#   #       }
-# }
-

@@ -26,6 +26,8 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.1",
     "sequelize": "^6.37.1",
+    "sequelize-typescript": "^2.1.6",
+    "ts-node": "^10.9.2",
     "winston": "^3.13.0"
   },
   "devDependencies": {
