@@ -19,9 +19,7 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: root1234
-          MYSQL_DATABASE: todo_app
-          MYSQL_USER: root
-          MYSQL_PASSWORD: root1234
+          MYSQL_DATABASE: todo-app
         options: >-
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
