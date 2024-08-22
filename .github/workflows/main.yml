@@ -54,5 +54,5 @@ jobs:
           DB_HOST: localhost
           DB_USER: root
           DB_PASSWORD: root1234
-          DB_NAME: todo_app
+          DB_NAME: todo-app
         run: npm run dev
